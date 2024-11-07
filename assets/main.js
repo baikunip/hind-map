@@ -6,6 +6,7 @@ const map = new mapboxgl.Map({
     minZoom:2,
     maxZoom:2
 });
+let hoveredPolygonId = null;
 map.on('load',()=>{
     map.addSource('continents',{
         'type': 'geojson',
@@ -17,12 +18,64 @@ map.on('load',()=>{
         'source': 'continents', // reference the data source
         'layout': {},
         'paint': {
-            'fill-color': 'red', // blue color fill
-            'fill-opacity': 0.5
-        }})
+                'fill-color': 'red',
+                'fill-opacity': [
+                    'case',
+                    ['boolean', ['feature-state', 'hover'], false],
+                    1,
+                    0.5
+                ]
+            }
+        })
+    map.addLayer({
+        'id': 'continents-borders',
+        'type': 'line',
+        'source': 'continents',
+        'layout': {},
+        'paint': {
+            'line-color': '#627BC1',
+            'line-width': 2
+        }
+    });
+    map.on('click', 'continents-layer', (e) => {
+        map.setProjection('mercator')
+        map.setMaxZoom(18)
+        map.zoomTo(5)
+        map.setMinZoom(2)
+    })
+    // the mouse is over the states layer.
+    map.on('mouseenter', 'continents-layer', () => {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+      // feature state for the feature under the mouse.
+      map.on('mousemove', 'continents-layer', (e) => {
+        if (e.features.length > 0) {
+            if (hoveredPolygonId !== null) {
+                map.setFeatureState(
+                    { source: 'continents', id: hoveredPolygonId },
+                    { hover: false }
+                );
+            }
+            hoveredPolygonId = e.features[0].properties["CONTINENT"];
+            map.setFeatureState(
+                { source: 'continents', id: hoveredPolygonId },
+                { hover: true }
+            );
+        }
+    });
+    // Change the cursor back to a pointer
+    // when it leaves the states layer.
+    map.on('mouseleave', 'continents-layer', () => {
+        map.getCanvas().style.cursor = '';
+        if (hoveredPolygonId !== null) {
+            map.setFeatureState(
+                { source: 'continents', id: hoveredPolygonId },
+                { hover: false }
+            );
+        }
+        hoveredPolygonId = null;
+    });
 })
 // map.once('zoomstart',()=>{
-//     map.setProjection('mercator')
-//     map.zoomTo(4)
-//     map.setMinZoom(3)
+//     
 // })
