@@ -3,14 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/current/metro.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>Hind's Map</title>
 </head>
 <body>
     <div id="map"></div>
-    
+    <div id="filter-container">
+        <button id="filter-button" type="button" class="button">
+            <div class="row g-0 text-center">
+                <div class="cell-3"><i class="bi bi-chevron-compact-down"></i></div>
+                <div class="cell-9"><span>FILTER</span></div>
+            </div>
+        </button>
+        <div id="filter-content" class="row">
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                      GEOGRAPHY
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="expanded filter-colors" data-caption="World">
+                                <ul>
+                                    <li class="expanded filter-colors" data-caption="Asia">
+                                        <ul>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="China"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Indonesia"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>   
+                    </div>
+                </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    DIMENSION
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Adapt"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Prepare"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Anticipate"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    CATEGORY
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Built Environment"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Natural Environment"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Economy"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="People & Community"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    <span style="font-size:smaller">RELEVANT ISSUE</span>
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Infrastructure Systems"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Urban Areas"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Adaptation Measures"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Equity Considerations"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Vulnerability and Risk"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Community Awareness"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    INDICATOR
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="filter-colors"><input type="radio" name="indicator" data-role="radio" data-caption="Reservoir Storage Level" checked></li>
+                            <li class="filter-colors"><input type="radio" name="indicator" data-role="radio" data-caption="Water Storage Infrastructure"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-filter cell-2 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                        <span style="font-size:smaller">TIME FRAME</span>
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <input id="time-slider" data-role="doubleslider"
+                        data-min="1900" data-max="2025"
+                        onchange="$('#slider-return-value').val(this.value)">
+                        <input type="text" id="slider-return-value" class="text-center filter-colors" disabled>
+                    </div>
+                </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    RESOURCES
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Reports"></li>
+                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Interview"></li>
+                        </ul>
+                    </div>
+                </div>
+                
+        </div>
+    </div>   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.metroui.org.ua/current/metro.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <script src="assets/main.js"></script>
 </body>

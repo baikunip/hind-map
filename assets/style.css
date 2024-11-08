@@ -1,2 +1,47 @@
 body { margin: 0; padding: 0; }
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: none;
+}
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.card{border-style:none!important;}
+.filter-colors{background-color: rgb(88, 182, 150)}
+#filter-container{
+    position:absolute;z-index:4;bottom:0;
+}
+#filter-button{
+    margin-left:1.5em;
+    background-color:rgba(127, 255, 212, 0.9);
+    width:8em;height:2em;
+    border-style:none;
+    border-top-left-radius: 10px;border-top-right-radius: 10px;
+    border-bottom-left-radius:0px;border-bottom-right-radius:0px;
+    color:white;
+}
+#filter-content{
+    background-color:rgba(127, 255, 212, 0.9);
+    margin:0;padding:0;
+    width:100vw;height:12em;
+    color:white;
+    display:flex;
+}
+.card-filter{
+    color:white;
+    height:12.5em;
+}
+.card-filter-body{
+    overflow-x: scroll;
+}
+.filter-treeviews{
+    overflow-y: scroll;
+    max-height:8em;
+}
+#slider-return-value{
+    width:97%;
+    margin:1%;
+    border-style:none;
+}
