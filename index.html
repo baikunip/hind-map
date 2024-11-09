@@ -10,7 +10,22 @@
     <title>Hind's Map</title>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="map">
+        <button type="button" class="button add-control" id="share-control"><i class="bi bi-reply"></i></button>
+        <button type="button" class="button add-control" id="extent-control"><i class="bi bi-arrows-collapse"></i></button>
+        <button type="button" class="button add-control" id="basemap-control"><i class="bi bi-stack"></i></button>
+        <div id="basemap-list">
+            <div
+                    data-role="dropdown"
+                    data-toggle-element="#basemap-control">
+                    <ul style="list-style: none">
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Sattelite" checked></li>
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="OSM"></li>
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Dark Matter"></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
     <div id="filter-container">
         <button id="filter-button" type="button" class="button">
             <div class="row g-0 text-center">
@@ -29,19 +44,19 @@
                                 <ul>
                                     <li class="expanded filter-colors" data-caption="Asia">
                                         <ul>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="China"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Indonesia"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
-                                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="China"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Indonesia"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
+                                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="India"></li>
                                         </ul>
                                     </li>
                                     
@@ -56,9 +71,9 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Adapt"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Prepare"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Anticipate"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Adapt"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Prepare"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Anticipate"></li>
                         </ul>
                     </div>
                 </div>
@@ -68,10 +83,10 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Built Environment"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Natural Environment"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Economy"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="People & Community"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Built Environment"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Natural Environment"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Economy"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="People & Community"></li>
                         </ul>
                     </div>
                 </div>
@@ -81,12 +96,12 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Infrastructure Systems"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Urban Areas"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Adaptation Measures"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Equity Considerations"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Vulnerability and Risk"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Community Awareness"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Infrastructure Systems"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Urban Areas"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Adaptation Measures"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Equity Considerations"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Vulnerability and Risk"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Community Awareness"></li>
                         </ul>
                     </div>
                 </div>
@@ -96,8 +111,8 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors"><input type="radio" name="indicator" data-role="radio" data-caption="Reservoir Storage Level" checked></li>
-                            <li class="filter-colors"><input type="radio" name="indicator" data-role="radio" data-caption="Water Storage Infrastructure"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" data-caption="Reservoir Storage Level" checked></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" data-caption="Water Storage Infrastructure"></li>
                         </ul>
                     </div>
                 </div>
@@ -118,8 +133,8 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Reports"></li>
-                            <li class="filter-colors"><input type="checkbox" data-role="checkbox" data-caption="Interview"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Reports"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Interview"></li>
                         </ul>
                     </div>
                 </div>

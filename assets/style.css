@@ -8,6 +8,44 @@ body { margin: 0; padding: 0; }
     background: none;
 }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.add-control {
+    position:absolute;
+    z-index:4;
+    background-color: white;
+    border: 0;
+    border-radius:4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 29px;
+    outline: none;
+    overflow: hidden;
+    padding: 0;
+    width: 29px;
+}
+
+#share-control{
+    right:.73em;
+    top:7.1em;
+}
+#extent-control{
+    right:.73em;
+    top:9.4em;
+}
+#basemap-control{
+    right:.73em;
+    top:11.7em;
+}
+#basemap-list{
+    position:absolute;
+    z-index:4;
+    border-radius:4px;
+    color:black;
+    background-color: #DADADA;
+    right:.73em;
+    top: 16.4em;
+    width:10em;
+}
 .card{border-style:none!important;}
 .filter-colors{background-color: rgb(88, 182, 150)}
 #filter-container{
@@ -33,12 +71,22 @@ body { margin: 0; padding: 0; }
     color:white;
     height:12.5em;
 }
+.card-filter-header{
+    font-size:.9em!important;
+}
 .card-filter-body{
     overflow-x: scroll;
 }
 .filter-treeviews{
     overflow-y: scroll;
     max-height:8em;
+}
+.treeview a {
+    font-size: .7em;
+}
+.checkbox .check, .checkbox .caption, .radio .check, .radio .caption{
+    font-size: .7em;
+    width:12px;height:12px;
 }
 #slider-return-value{
     width:97%;
