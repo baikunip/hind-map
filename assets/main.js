@@ -1,4 +1,11 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmFpa3VuaXAxNCIsImEiOiJjbTM3ZjRoMHYwZGg3MmxyNnJ2Y2U0ZzRxIn0.jjzTr5UGycXAVWa8_bgt1w';
+
+// Filter variables
+    let timeFrame=[1900,2025],
+    issues=['Infrastructure Systems', 'Urban Areas', 'Adaptation Measures', 'Equity Considerations', 'Vulnerability and Risk', 'Community Awareness', 'Resilient Infrastructure', 'Urban Green Spaces', 'Water-Efficient Design', 'Costs and Resilience', 'Forecast-Based Financing', 'Impact on Economic Growth', 'Socioeconomic Drought', 'Economic Impacts of Drought', 'Resource Allocation', 'Trade-offs and Decision-Making', 'Ecosystem Resilience', 'Mitigation Strategies', 'Ecological Drought', 'Human-Environment Interaction', 'Nature-Based Solutions', 'Ecosystems and Drought', 'Watersheds and Wetlands', 'Community Resilience and Adaptation', 'Economic Channel', 'Immediate and Medium-Term Impacts', 'Communities', 'Households', 'Individuals', 'Economic Consequences', 'Health and Well-Being', 'Social Impacts', "nan"],
+    categories=['Built Environment',"Natural Environment","Economy","People and Community"],
+    strategyPreparation=null,strategyAnticipation=null,strategyAdaptation=null
+// End of filter variables
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/satellite-streets-v12',
@@ -95,6 +102,62 @@ map.on('load',()=>{
         }
         hoveredPolygonId = null;
     });
+    $('input[type=radio][name=basemap]').change(function() {
+        map.setStyle('mapbox://styles/mapbox/' +this.value)
+    })
+    // filters
+    $('#strategy-checkboxes').on('change',(val)=>{
+        if(val.isTrusted){
+            switch (val.target.dataset.caption) {
+                case "Adapt":
+                    strategyAdaptation=="Adapt"?strategyAdaptation=null:strategyAdaptation="Adapt"
+                    break;
+                case "Prepare":
+                    strategyPreparation=="Prepare"?strategyPreparation=null:strategyPreparation="Prepare"
+                    break;
+                default:
+                    strategyAnticipation=="Anticipate"?strategyAnticipation=null:strategyAnticipation="Anticipate"
+                    break;
+            }
+            console.log("Adapt: "+strategyAdaptation)
+            console.log("Prepare: "+strategyPreparation)
+            console.log("Anticipate: "+strategyAnticipation)
+            applyFilters()
+        }
+    })
+    $('#category-checkboxes').on('change',(val)=>{
+        if(val.isTrusted){
+            if(categories.includes(val.target.dataset.caption))categories=categories.filter((e)=>{ return e !== val.target.dataset.caption })
+            else categories.push(val.target.dataset.caption)
+            console.log(categories)
+            applyFilters()
+        }
+    })
+    $('#relevant-issue-checkboxes').on('change',(val)=>{
+        if(val.isTrusted){
+            if(issues.includes(val.target.dataset.caption))issues=issues.filter((e)=>{ return e !== val.target.dataset.caption })
+            else issues.push(val.target.dataset.caption)
+            applyFilters()
+        }
+    })
+    function applyFilters(){
+        let timeFrame1st=[">=", ['to-number', ["get", 'time']], parseInt(timeFrame[0])],
+        timeFrame2nd=["<=", ['to-number', ["get", 'time']], parseInt(timeFrame[1])],
+        issueFilter=["in", ["get","Issues"],["literal", issues]],
+        categoryFilter=["in", ["get","Category"],["literal", categories]],
+        adaptationFilter=["==",["get","Drought Resilience Strategy Adaptation"],strategyAdaptation],
+        anticipationFilter=["==",["get","Drought Resilience Strategy Anticipation"],strategyAnticipation],
+        preparationFilter=["==",["get","Drought Resilience Strategy Preparation"],strategyPreparation],
+        queryFilter=['all',timeFrame1st,timeFrame2nd,issueFilter,categoryFilter]
+        if(strategyAdaptation==null&&strategyAnticipation==null&&strategyPreparation==null){}
+        else queryFilter.push(adaptationFilter,anticipationFilter,preparationFilter)
+        map.setFilter('point-layer',queryFilter)
+    }
+    $('#time-slider').on('change',(val)=>{
+        timeFrame=val.detail.val.split(',')
+        $('#slider-return-value').val(val.detail.val)
+        applyFilters()
+    })
 })
 
 $('#filter-button').on('click',()=>{
@@ -117,12 +180,4 @@ $('#filter-button').on('click',()=>{
         `)
         hideFilter=true
     }
-})
-$('input[type=radio][name=basemap]').change(function() {
-    map.setStyle('mapbox://styles/mapbox/' +this.value)
-})
-// filters
-$('#time-slider').on('change',(val)=>{
-    console.log(val.detail.val)
-    $('#slider-return-value').val(val.detail.val)
 })

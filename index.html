@@ -70,7 +70,7 @@
                     DIMENSION
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                        <ul data-role="treeview" class="filter-treeviews filter-colors" id="strategy-checkboxes">
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Adapt"></li>
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Prepare"></li>
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Anticipate"></li>
@@ -82,11 +82,11 @@
                     CATEGORY
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Built Environment"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Natural Environment"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Economy"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="People & Community"></li>
+                        <ul data-role="treeview" class="filter-treeviews filter-colors" id="category-checkboxes">
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" checked data-caption="Built Environment"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" checked data-caption="Natural Environment"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" checked data-caption="Economy"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" checked data-caption="People and Community"></li>
                         </ul>
                     </div>
                 </div>
@@ -95,13 +95,13 @@
                     <span style="font-size:smaller">RELEVANT ISSUE</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Infrastructure Systems"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Urban Areas"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Adaptation Measures"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Equity Considerations"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Vulnerability and Risk"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Community Awareness"></li>
+                        <ul data-role="treeview" class="filter-treeviews filter-colors" id="relevant-issue-checkboxes">
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" checked data-caption="Infrastructure Systems"></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" checked data-caption="Urban Areas"></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" checked data-caption="Adaptation Measures"></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" checked data-caption="Equity Considerations"></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" checked data-caption="Vulnerability and Risk"></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" checked data-caption="Community Awareness"></li>
                         </ul>
                     </div>
                 </div>
@@ -111,8 +111,8 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" data-caption="Reservoir Storage Level" checked></li>
-                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" data-caption="Water Storage Infrastructure"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Reservoir Storage Levels" data-caption="Reservoir Storage Level" checked></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Water Storage Infrastructure" data-caption="Water Storage Infrastructure"></li>
                         </ul>
                     </div>
                 </div>
