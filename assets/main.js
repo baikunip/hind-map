@@ -34,7 +34,7 @@ let hoveredPolygonId = null,hideFilter=true
 function loadLayers(){
     map.addSource('continents',{
         'type': 'geojson',
-        'data':'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json'
+        'data':'https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson'
     })
     map.addSource('datapoints',{
         'type':'geojson',
