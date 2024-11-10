@@ -31,7 +31,7 @@ class HelloWorldControl {
 }
 map.addControl(new mapboxgl.NavigationControl());
 let hoveredPolygonId = null,hideFilter=true
-map.on('load',()=>{
+function loadLayers(){
     map.addSource('continents',{
         'type': 'geojson',
         'data':'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json'
@@ -64,6 +64,9 @@ map.on('load',()=>{
                 'circle-color': '#F84C4C' // red color
             }
     })
+}
+map.on('load',()=>{
+    loadLayers()
     map.on('click', 'continents-layer', (e) => {
         map.setProjection('mercator')
         map.setMaxZoom(18)
@@ -153,6 +156,10 @@ map.on('load',()=>{
         else queryFilter.push(adaptationFilter,anticipationFilter,preparationFilter)
         map.setFilter('point-layer',queryFilter)
     }
+    map.on('style.load',()=>{
+        loadLayers()
+        applyFilters()
+    })
     $('#time-slider').on('change',(val)=>{
         timeFrame=val.detail.val.split(',')
         $('#slider-return-value').val(val.detail.val)
