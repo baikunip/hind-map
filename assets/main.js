@@ -29,13 +29,17 @@ map.on('load',()=>{
         'type': 'geojson',
         'data':'https://gist.githubusercontent.com/hrbrmstr/91ea5cc9474286c72838/raw/59421ff9b268ff0929b051ddafafbeb94a4c1910/continents.json'
     })
+    map.addSource('datapoints',{
+        'type':'geojson',
+        'data':datapoints
+    })
     map.addLayer({
         'id': 'continents-layer',
         'type': 'fill',
         'source': 'continents', // reference the data source
         'layout': {},
         'paint': {
-                'fill-color': 'red',
+                'fill-color': 'rgba(192, 192, 192, 0.151)',
                 'fill-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
@@ -45,15 +49,14 @@ map.on('load',()=>{
             }
         })
     map.addLayer({
-        'id': 'continents-borders',
-        'type': 'line',
-        'source': 'continents',
-        'layout': {},
-        'paint': {
-            'line-color': '#627BC1',
-            'line-width': 2
-        }
-    });
+        'id': 'point-layer',
+            'type': 'circle',
+            'source': 'datapoints',
+            'paint': {
+                'circle-radius': 10,
+                'circle-color': '#F84C4C' // red color
+            }
+    })
     map.on('click', 'continents-layer', (e) => {
         map.setProjection('mercator')
         map.setMaxZoom(18)
@@ -114,4 +117,12 @@ $('#filter-button').on('click',()=>{
         `)
         hideFilter=true
     }
+})
+$('input[type=radio][name=basemap]').change(function() {
+    map.setStyle('mapbox://styles/mapbox/' +this.value)
+})
+// filters
+$('#time-slider').on('change',(val)=>{
+    console.log(val.detail.val)
+    $('#slider-return-value').val(val.detail.val)
 })

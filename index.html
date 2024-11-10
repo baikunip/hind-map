@@ -19,9 +19,9 @@
                     data-role="dropdown"
                     data-toggle-element="#basemap-control">
                     <ul style="list-style: none">
-                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Sattelite" checked></li>
-                        <li><input type="radio" name="basemap" data-role="radio" data-caption="OSM"></li>
-                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Dark Matter"></li>
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Sattelite" value="satellite-streets-v12" checked></li>
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Standard" value="standard"></li>
+                        <li><input type="radio" name="basemap" data-role="radio" data-caption="Dark" value="dark-v11"></li>
                     </ul>
             </div>
         </div>
@@ -122,8 +122,7 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <input id="time-slider" data-role="doubleslider"
-                        data-min="1900" data-max="2025"
-                        onchange="$('#slider-return-value').val(this.value)">
+                        data-min="1900" data-max="2025">
                         <input type="text" id="slider-return-value" class="text-center filter-colors" disabled>
                     </div>
                 </div>
@@ -144,6 +143,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.metroui.org.ua/current/metro.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <script src="assets/datasample.js"></script>
     <script src="assets/main.js"></script>
 </body>
 </html>
