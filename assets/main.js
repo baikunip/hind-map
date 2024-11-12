@@ -79,16 +79,11 @@ map.on('load',()=>{
             }           
             map.on('click',(e) => {
                 let features = map.queryRenderedFeatures(e.point, { layers: ['continents-layer']});
-                if (!features.length) {
-                    $('#popup-window-buttons').hide()
-                    $('.window-caption').attr('display','none')
-                    return;
-                }
-                $('#popup-window-buttons').attr('data-title',features[0].properties.ADMIN+' Popup')
-                $('.window-caption').attr('display','flex')
-                $('#popup-window-buttons').show()
+                // if (!features.length) {
+                //     return;
+                // }
                 map.panTo(e.lngLat)
-                new mapboxgl.Popup({ closeOnClick: false })
+                new mapboxgl.Popup({closeButton: false})
                         .setLngLat(e.lngLat)
                         .setHTML(`
                                 <div class="social-box"style="padding:10px;">
