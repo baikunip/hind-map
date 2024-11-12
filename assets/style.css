@@ -49,9 +49,9 @@ body { margin: 0; padding: 0; }
 }
 .card{border-style:none!important;}
 .filter-colors{
-    /* background-color: rgb(88, 182, 150) */
-    background-color: #3d3b3b;
-    color:white;
+    background-color: rgb(88, 182, 150)
+    /* background-color: #3d3b3b; */
+    /* color:white; */
 }
 #filter-container{
     position:absolute;z-index:4;bottom:0;
@@ -60,8 +60,8 @@ body { margin: 0; padding: 0; }
 #filter-button{
     position:absolute;z-index:4;bottom:0;left:2.5em;
     margin-left:1.5em;
-    /* background-color:rgba(127, 255, 212, 0.9); */
-    background-color: #919191;
+    background-color:rgba(127, 255, 212, 0.9);
+    /* background-color: #919191; */
     width:8em;height:2em;
     border-style:none;
     border-top-left-radius: 10px;border-top-right-radius: 10px;
@@ -70,8 +70,8 @@ body { margin: 0; padding: 0; }
 }
 #filter-content{
     /* background: rgb(145,145,145); */
-    background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(230,230,230,1) 100%);
-    /* background-color:rgba(127, 255, 212, 0.9); */
+    /* background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(230,230,230,1) 100%); */
+    background-color:rgba(127, 255, 212, 0.9);
     margin:0;padding:0;
     width:100vw;height:100%;
     color:white;
