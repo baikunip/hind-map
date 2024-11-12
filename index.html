@@ -11,6 +11,15 @@
 </head>
 <body>
     <div id="map">
+        <!-- <div data-role="window" id="popup-window-buttons"
+            data-title="Country's Card"
+            data-btn-close="true"
+            data-btn-min="false"
+            data-btn-max="false"
+            data-cls-caption="rgb(88, 182, 150)"
+            class="p-2 no-visible">
+            On/off window system buttons with attributes.
+        </div> -->
         <button type="button" class="button add-control" id="share-control"><i class="bi bi-reply"></i></button>
         <button type="button" class="button add-control" id="extent-control"><i class="bi bi-arrows-collapse"></i></button>
         <button type="button" class="button add-control" id="basemap-control"><i class="bi bi-stack"></i></button>
@@ -25,14 +34,14 @@
                     </ul>
             </div>
         </div>
-    </div>
-    <div id="filter-container">
         <button id="filter-button" type="button" class="button">
             <div class="row g-0 text-center">
                 <div class="cell-3"><i class="bi bi-chevron-compact-down"></i></div>
                 <div class="cell-9"><span>FILTER</span></div>
             </div>
         </button>
+    </div>
+    <div id="filter-container">
         <div id="filter-content" class="row">
                 <div class="card card-filter cell-1 m-1 filter-colors">
                     <div class="card-header card-filter-header text-center">
