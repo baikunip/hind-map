@@ -254,10 +254,10 @@ map.on('load',()=>{
                     'pe-layer-2020',
                     'visibility','visible'
                 )
-                // $('#legend-container').removeClass('gw-legend').addClass('pe-legend')
-                // $('#legend-value').html('Presipitation Values')
-                // $('#max-legend-value').html('7,842')
-                // $('#min-legend-value').html('0.07')
+                $('#legend-container').removeClass('gw-legend').addClass('pe-legend')
+                $('#legend-value').html('Presipitation Values')
+                $('#max-legend-value').html('7,842')
+                $('#min-legend-value').html('0.07')
             }
             else{
                 map.setLayoutProperty(
@@ -268,10 +268,10 @@ map.on('load',()=>{
                     'pe-layer-2020',
                     'visibility','none'
                 )
-                // $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
-                // $('#legend-value').html('Ground Water Values')
-                // $('#max-legend-value').html('5,569')
-                // $('#min-legend-value').html('-0.406')
+                $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
+                $('#legend-value').html('Ground Water Values')
+                $('#max-legend-value').html('5,569')
+                $('#min-legend-value').html('-0.406')
             }
         });
         $('#strategy-checkboxes').on('change',(val)=>{
