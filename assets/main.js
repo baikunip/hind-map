@@ -139,7 +139,7 @@ map.on('load',()=>{
                                         <hr>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
-                                        <b>Drought Resilience (SPEI)</b>
+                                        <b>Drought Resilience</b>
                                     </div>
                                     <div class="cell-12 popup-text">
                                         `+features[0].properties.spei+`
