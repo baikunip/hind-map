@@ -133,7 +133,7 @@ map.on('load',()=>{
                 new mapboxgl.Popup({closeButton: false,width:'auto',anchor:'left',maxWidth:'none'})
                         .setLngLat(e.lngLat)
                         .setHTML(`
-                                <div class="cases-popup-container row">
+                                <div class="cases-popup-container row no-gap">
                                     <div class="cell-12">
                                         <span><h3><b>`+features[0].properties.title+`</b></h3></span>
                                         <hr>
@@ -149,20 +149,20 @@ map.on('load',()=>{
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Indicator</b></span>
                                     </div>
-                                    <div class="cell-12 popup-text">
+                                    <div class="cell-12 popup-text-sm">
                                         <span>Standardized Precipitation Evapotranspiration Index (SPEI)</span>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Relevant Issue</b></span>
                                     </div>
-                                    <div class="cell-12 popup-text">
+                                    <div class="cell-12 popup-text-sm">
                                         <span>Drought Monitoring and Water Balance</span>
                                         <span>Natural Environment</span>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Data Source</b></span>
                                     </div>
-                                    <div class="cell-12 popup-text">
+                                    <div class="cell-12 popup-text-sm">
                                         <ol>
                                             <li>NASA</li>
                                             <li>LCSG: Climatology & Climate Services Laboratory</li>
@@ -170,7 +170,7 @@ map.on('load',()=>{
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <hr>
-                                        <span><b>IDROki </b> Historical Data</span>
+                                        <span><i class="bi bi-search"></i><b> IDRO<span style="font-style:italic;">ki</span></b> Historical Data</span>
                                     </div>
                                 </div>
                             `).addTo(map);

@@ -156,8 +156,17 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     overflow-y: scroll;
     max-height:40vh;
 }
-.popup-text{font-size:1.3em;}
-.popup-title{font-size:1.5em;}
+.popup-text{font-size:1.2em;}
+.popup-text-sm{font-size:.9em;}
+.popup-title{font-size:1.4em;}
+.row.no-pad {
+    margin-right:0;
+    margin-left:0;
+  }
+  .row.no-pad > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+  }
 #read-more-popup{
     border-style:none;
     box-shadow: none;
