@@ -9,7 +9,9 @@ let tilesetID='baikunip14.14a7rsdu'
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/satellite-streets-v12',
-    center: [-74.5, 40], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+    center: [20.50691460904781,
+          34.2434864884906
+    ], // starting position [lng, lat]. Note that lat must be set between -90 and 90
     zoom: 2, // starting zoom
     minZoom:2,
     maxZoom:2
