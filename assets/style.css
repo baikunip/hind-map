@@ -95,6 +95,10 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     overflow-x: scroll;
     color:white!important;
 }
+#relevant-issues-container {
+    flex: 0 0 calc(8.333335%* 2 - var(--grid-gutter));
+    max-width: calc(6%* 2 - var(--grid-gutter));
+}
 .filter-treeviews{
     overflow-y: scroll;
     max-height:8em;
