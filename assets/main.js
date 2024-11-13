@@ -163,7 +163,7 @@ map.on('load',()=>{
                                         <span><b>Data Source</b></span>
                                     </div>
                                     <div class="cell-12 popup-text-sm">
-                                        <ol>
+                                        <ol style="padding:0;margin:0;">
                                             <li>NASA</li>
                                             <li>LCSG: Climatology & Climate Services Laboratory</li>
                                         </ol>
