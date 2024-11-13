@@ -141,10 +141,21 @@ map.on('load',()=>{
                                     <div class="cell-12 mt-1 popup-title">
                                         <b>Drought Severity (SPEI)</b>
                                     </div>
-                                    <div class="cell-12 popup-text" id="spei-container">
+                                    <div class="cell-12 popup-text" id="spei-container-less">
                                         `+shortText+`...
                                         <br>
-                                        <button type="button" class="button" id="read-more-popup">read more</button>
+                                        <button type="button" class="button" id="read-more-popup" onClick="()=>{
+                                            $('#spei-container-more').show()
+                                            $('#spei-container-less').hide()
+                                        }">read more</button>
+                                    </div>
+                                    <div class="cell-12 popup-text" id="spei-container-more" style="display:none">
+                                        `+features[0].properties.spei+`
+                                        <br>
+                                        <button type="button" class="button" id="read-less-popup" onClick="()=>{
+                                            $('#spei-container-less').show()
+                                            $('#spei-container-more').hide()
+                                        }">read less</button>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Indicator</b></span>
@@ -177,8 +188,15 @@ map.on('load',()=>{
                 function readLess(){
                     $('#spei-container').html(shortText+`...
                         <br>
-                        <button type="button" class="button" id="read-more-popup" onClick="readMore()">read more</button>
+                        <button type="button" class="button" id="read-more-popup">read more</button>
                     `)
+                    $('#read-more-popup').on('click',()=>{
+                        $('#spei-container').html(features[0].properties.spei+`
+                            <br>
+                            <button type="button" class="button" id="read-less-popup">read less</button>
+                        `)
+                        $('#read-less-popup').on('click',readLess())
+                    })
                 }
                 function readMore(){
                     $('#spei-container').html(features[0].properties.spei+`
@@ -214,7 +232,6 @@ map.on('load',()=>{
         // when it leaves the states layer.
         map.on('mouseleave', 'continents-layer', () => {
             map.getCanvas().style.cursor = '';
-            console.log(hoveredPolygonId)
             if (hoveredPolygonId !== null) {
                 map.setFeatureState(
                     { source: 'continents', id: hoveredPolygonId },
