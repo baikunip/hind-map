@@ -138,7 +138,7 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
 
 /* Popups */
 .mapboxgl-popup-content {
-    background-color: antiquewhite;
+    background-color: transparent;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     /* padding: 10px 10px 15px; */
@@ -147,17 +147,17 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     position: relative;
 }
 .mapboxgl-popup-tip{
-    border-right-color: antiquewhite!important;
+    border-right-color: rgba(250, 235, 215, 0.8)!important;
 }
 .cases-popup-container{
     width:36em;
-    background-color: antiquewhite;
+    background-color: rgba(250, 235, 215, 0.8);
     padding:8px;
     overflow-y: scroll;
-    max-height:65vh;
+    max-height:40vh;
 }
-.popup-text{font-size:1.7em;}
-.popup-title{font-size:1.9em;}
+.popup-text{font-size:1.3em;}
+.popup-title{font-size:1.5em;}
 /* Legends */
 #legend-container{
     height:5.5em;
