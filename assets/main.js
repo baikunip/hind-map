@@ -39,7 +39,7 @@ function loadLayers(){
     })
     map.addSource('datapoints',{
         'type':'geojson',
-        'data':datapoints,
+        'data':caseStudies,
         'generateId': true //This ensures that all features have unique IDs 
     })
     map.addLayer({
@@ -78,32 +78,54 @@ map.on('load',()=>{
                 map.setMinZoom(2)
             }           
             map.on('click',(e) => {
-                let features = map.queryRenderedFeatures(e.point, { layers: ['continents-layer']});
+                let features = map.queryRenderedFeatures(e.point, { layers: ['point-layer']});
                 // if (!features.length) {
                 //     return;
                 // }
                 map.panTo(e.lngLat)
-                new mapboxgl.Popup({closeButton: false})
+                $('.mapboxgl-popup').css('max-width','auto')
+                new mapboxgl.Popup({closeButton: false,width:'auto',anchor:'left',maxWidth:'none'})
                         .setLngLat(e.lngLat)
                         .setHTML(`
-                                <div class="social-box"style="padding:10px;">
-                                    <div class="header bg-cyan fg-white">
-                                        <div class="title">`+features[0].properties.ADMIN+`</div>
-                                        <div class="subtitle">`+features[0].properties.ISO_A3+`</div>
+                                <div class="cases-popup-container row">
+                                    <div class="cell-12">
+                                        <span><h2><b>`+features[0].properties.title+`</b></h2></span>
+                                        <hr>
                                     </div>
-                                    <ul class="skills">
-                                        <li>
-                                            <div class="text-bold">6</div>
-                                            <div>VALUE</div>
-                                        </li>
-                                        <li>
-                                            <div class="text-bold">4</div>
-                                            <div>VALUE</div>
-                                        </li>
-                                    </ul>
+                                    <div class="cell-12 mt-1 popup-title">
+                                        <b>Drought Severity (SPEI)</b>
+                                    </div>
+                                    <div class="cell-12 popup-text">
+                                        `+features[0].properties.spei+`
+                                    </div>
+                                    <div class="cell-12 mt-1 popup-title">
+                                        <span><b>Indicator</b></span>
+                                    </div>
+                                    <div class="cell-12 popup-text">
+                                        <span>Standardized Precipitation Evapotranspiration Index (SPEI)</span>
+                                    </div>
+                                    <div class="cell-12 mt-1 popup-title">
+                                        <span><b>Relevant Issue</b></span>
+                                    </div>
+                                    <div class="cell-12 popup-text">
+                                        <span>Drought Monitoring and Water Balance</span>
+                                        <span>Natural Environment</span>
+                                    </div>
+                                    <div class="cell-12 mt-1 popup-title">
+                                        <span><b>Data Source</b></span>
+                                    </div>
+                                    <div class="cell-12 popup-text">
+                                        <ol>
+                                            <li>NASA</li>
+                                            <li>LCSG: Climatology & Climate Services Laboratory</li>
+                                        </ol>
+                                    </div>
+                                    <div class="cell-12 mt-1 popup-title">
+                                        <hr>
+                                        <span><b>IDROki </b> Historical Data</span>
+                                    </div>
                                 </div>
-                            `)
-                        .addTo(map);
+                            `).addTo(map);
             })
         })
         // the mouse is over the states layer.
@@ -192,7 +214,7 @@ map.on('load',()=>{
         })
         $('#time-slider').on('change',(val)=>{
             timeFrame=val.detail.val.split(',')
-            $('#slider-return-value').val(val.detail.val)
+            $('#slider-return-value').val(timeFrame[0]+' - '+timeFrame[1])
             applyFilters()
         })
     })

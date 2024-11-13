@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.metroui.org.ua/current/metro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <title>Hind's Map</title>
 </head>
@@ -99,9 +102,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card card-filter cell-1 m-1 filter-colors">
+                <div class="card card-filter cell-2 m-1 filter-colors" style="width:20px!important;" id="relevant-issues-container">
                     <div class="card-header card-filter-header text-center">
-                    <span style="font-size:smaller">RELEVANT ISSUE</span>
+                    <span>RELEVANT ISSUES</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="relevant-issue-checkboxes">
@@ -127,12 +130,12 @@
                 </div>
                 <div class="card card-filter cell-2 m-1 filter-colors">
                     <div class="card-header card-filter-header text-center">
-                        <span style="font-size:smaller">TIME FRAME</span>
+                        <span>TIME PERIOD</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <input id="time-slider" data-role="doubleslider"
                         data-min="1990" data-max="2024">
-                        <input type="text" id="slider-return-value" class="text-center filter-colors" disabled>
+                        <input type="text" id="slider-return-value" class="text-center filter-colors" disabled value="1990 - 2024">
                     </div>
                 </div>
                 <div class="card card-filter cell-1 m-1 filter-colors">
@@ -141,8 +144,10 @@
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Reports"></li>
-                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Interview"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Publications"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Tools"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Report"></li>
+                            <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Case Studies"></li>
                         </ul>
                     </div>
                 </div>
@@ -152,7 +157,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.metroui.org.ua/current/metro.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
-    <script src="assets/datasample.js"></script>
+    <script src="assets/caseStudies.js"></script>
     <script src="assets/main.js"></script>
 </body>
 </html>

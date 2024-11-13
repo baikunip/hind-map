@@ -1,4 +1,6 @@
-body { margin: 0; padding: 0; }
+body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;}
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
@@ -49,19 +51,24 @@ body { margin: 0; padding: 0; }
 }
 .card{border-style:none!important;}
 .filter-colors{
-    background-color: rgb(88, 182, 150)
+    /* background-color: rgb(88, 182, 150) */
+    background-color:transparent;
+    /* background-color: rgba(255, 255, 255, 0.10); */
+    font-size:1em;
     /* background-color: #3d3b3b; */
     /* color:white; */
 }
 #filter-container{
     position:absolute;z-index:4;bottom:0;
+    background-color:#72AA9F;
     height:25vh;
 }
 #filter-button{
-    position:absolute;z-index:4;bottom:0;left:2.5em;
-    margin-left:1.5em;
-    background-color:rgba(127, 255, 212, 0.9);
-    /* background-color: #919191; */
+    position:absolute;z-index:4;bottom:0;left:.1em;
+    margin-left:1em;
+    /* background-color:rgba(127, 255, 212, 0.9); */
+    background-color: #72AA9F;
+    font-size:1.3rem;
     width:8em;height:2em;
     border-style:none;
     border-top-left-radius: 10px;border-top-right-radius: 10px;
@@ -71,35 +78,85 @@ body { margin: 0; padding: 0; }
 #filter-content{
     /* background: rgb(145,145,145); */
     /* background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(230,230,230,1) 100%); */
-    background-color:rgba(127, 255, 212, 0.9);
+    /* background-color:rgba(127, 255, 212, 0.9); */
+    margin-left:.7em!important;
     margin:0;padding:0;
     width:100vw;height:100%;
-    color:white;
+    /* color:white; */
     display:flex;
 }
 .card-filter{
     color:white;
+    background-color: rgba(255, 255, 255, 0.10);
     height:12.5em;
 }
 .card-filter-header{
-    font-size:.9em!important;
+    font-size:1.3em!important;
 }
 .card-filter-body{
     overflow-x: scroll;
+    color:white!important;
 }
 .filter-treeviews{
     overflow-y: scroll;
     max-height:8em;
+    background-color: transparent!important;
 }
 .treeview a {
-    font-size: .7em;
+    font-size: .9em;
+    color:white!important;
+    background-color: transparent;
+    font-family: "Source Sans 3", sans-serif;
+}
+.treeview, .treeview ul:not(.d-menu) {
+    background-color: transparent;
 }
 .checkbox .check, .checkbox .caption, .radio .check, .radio .caption{
-    font-size: .7em;
-    width:12px;height:12px;
+    font-size: .9em;
+    color:white!important;
+    font-family: "Source Sans 3", sans-serif;
+    /* width:12px;height:12px; */
 }
+.checkbox input[type=checkbox]:checked~.check {
+    background-color: #72AA9F!important;
+}
+/* Slider styling */
+.slider .complete {
+    background-color: grey;
+}
+.slider .marker {
+    background-color: #72AA9F;
+    border-color:black;
+    border-radius:50%;
+}
+.slider{width:96%;margin-top:4%;margin-left:2%;margin-right:2%;
+}
+#slider-return-value{font-size:2em;color:white!important;}
 #slider-return-value{
     width:97%;
     margin:1%;
     border-style:none;
 }
+
+/* Popups */
+.mapboxgl-popup-content {
+    background-color: antiquewhite;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    /* padding: 10px 10px 15px; */
+    padding:0!important;
+    pointer-events: auto;
+    position: relative;
+}
+.mapboxgl-popup-tip{
+    border-right-color: antiquewhite!important;
+}
+.cases-popup-container{
+    width:36em;
+    background-color: antiquewhite;
+    padding:8px;
+    overflow-y: scroll;
+    max-height:65vh;
+}
+.popup-text{font-size:1.7em;}
+.popup-title{font-size:1.9em;}
