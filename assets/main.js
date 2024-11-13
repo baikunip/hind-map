@@ -1,5 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmFpa3VuaXAxNCIsImEiOiJjbTM3ZjRoMHYwZGg3MmxyNnJ2Y2U0ZzRxIn0.jjzTr5UGycXAVWa8_bgt1w';
-
+let tilesetID='baikunip14.14a7rsdu'
 // Filter variables
     let timeFrame=[1900,2025],
     issues=['Infrastructure Systems', 'Urban Areas', 'Adaptation Measures', 'Equity Considerations', 'Vulnerability and Risk', 'Community Awareness', 'Resilient Infrastructure', 'Urban Green Spaces', 'Water-Efficient Design', 'Costs and Resilience', 'Forecast-Based Financing', 'Impact on Economic Growth', 'Socioeconomic Drought', 'Economic Impacts of Drought', 'Resource Allocation', 'Trade-offs and Decision-Making', 'Ecosystem Resilience', 'Mitigation Strategies', 'Ecological Drought', 'Human-Environment Interaction', 'Nature-Based Solutions', 'Ecosystems and Drought', 'Watersheds and Wetlands', 'Community Resilience and Adaptation', 'Economic Channel', 'Immediate and Medium-Term Impacts', 'Communities', 'Households', 'Individuals', 'Economic Consequences', 'Health and Well-Being', 'Social Impacts', "nan"],
@@ -14,21 +14,6 @@ const map = new mapboxgl.Map({
     minZoom:2,
     maxZoom:2
 });
-// Add zoom and rotation controls to the map.
-class HelloWorldControl {
-    onAdd(map) {
-        this._map = map;
-        this._container = document.createElement('div');
-        this._container.className = 'mapboxgl-ctrl';
-        this._container.textContent = 'Hello, world';
-        return this._container;
-    }
-
-    onRemove() {
-        this._container.parentNode.removeChild(this._container);
-        this._map = undefined;
-    }
-}
 map.addControl(new mapboxgl.NavigationControl());
 let hoveredPolygonId = null,hideFilter=true
 function loadLayers(){
@@ -36,6 +21,11 @@ function loadLayers(){
         'type': 'geojson',
         'data':'https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson',
         'generateId': true //This ensures that all features have unique IDs 
+    })
+    map.addSource('gw-2015',{
+        type:'vector',
+        url:'mapbox://'+tilesetID
+
     })
     map.addSource('datapoints',{
         'type':'geojson',
@@ -65,6 +55,33 @@ function loadLayers(){
                 'circle-radius': 10,
                 'circle-color': 'rgb(88, 182, 150)' // red color
             }
+    })
+    map.addLayer({
+        'id':'gw-layer-2015','source':'gw-2015','source-layer':'GLOBAL_DAnew2_GroundwaterStor-70w6uu',
+        'type': 'circle',
+        'paint':{
+            'circle-radius': {
+              base: 1.75,
+              stops: [
+                [12, 2],
+                [22, 180]
+              ]
+            },
+            'circle-color':'#002140',
+            'circle-opacity':
+            ['step',
+              ['get', 'value'],
+              4765.67,
+              .1,
+              4850.03,
+              .3,
+              4884.63,
+              .7,
+              4905.60,
+              1,
+              0
+            ]
+        }
     })
 }
 map.on('load',()=>{
