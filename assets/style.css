@@ -158,3 +158,19 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
 }
 .popup-text{font-size:1.7em;}
 .popup-title{font-size:1.9em;}
+/* Legends */
+#legend-container{
+    height:5.5em;
+    width:33px;
+    border-style:none;
+}
+#max-legend-value{position:absolute;top:0;left:0;padding:0;}
+#min-legend-value{position:absolute;bottom:0;left:0;padding:0;}
+.gw-legend{
+    background: rgb(0,33,64);
+    background: linear-gradient(0deg, rgba(0,33,64,0.05085784313725494) 0%, rgba(0,33,64,1) 100%);
+}
+.pe-legend{
+    background: rgb(89,144,192);
+    background: linear-gradient(0deg, rgba(89,144,192,0) 0.1%, rgba(89,144,192,1) 100%);
+}

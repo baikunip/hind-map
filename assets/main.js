@@ -25,12 +25,61 @@ function loadLayers(){
     map.addSource('gw-2015',{
         type:'vector',
         url:'mapbox://'+tilesetID
-
+    })
+    map.addSource('pe-2020',{
+        type:'vector','url':'mapbox://baikunip14.6f3btmqw'
     })
     map.addSource('datapoints',{
         'type':'geojson',
         'data':caseStudies,
         'generateId': true //This ensures that all features have unique IDs 
+    })
+    
+    map.addLayer({
+        'id':'gw-layer-2015','source':'gw-2015','source-layer':'GLOBAL_DAnew2_GroundwaterStor-70w6uu',
+        'type': 'circle',
+        'paint':{
+            'circle-radius': {
+              base: 3,
+              stops: [
+                [12, 6],
+                [22, 180]
+              ]
+            },
+            'circle-color':'#002140',
+            'circle-opacity':
+            ['step',
+                ["to-number",['get', 'value']],
+                1,       
+                4765.67,.1,
+                4850.03,.3, 
+                4884.63,.7,
+                4905.60,1
+            ]
+        }
+    })
+    map.addLayer({
+        'id':'pe-layer-2020','source':'pe-2020','source-layer':'2020_GLOBAL_IMERG_Precipitati-37a9yr',
+        'type': 'circle',
+        'paint':{
+            'circle-radius': {
+              base: 3,
+              stops: [
+                [12, 6],
+                [22, 180]
+              ]
+            },
+            'circle-color':'#5990C0',
+            'circle-opacity':
+            ['step',
+                ["to-number",['get', 'value']],
+                1, 
+                266.27 ,.1,     
+                469.87,.3,
+                1146.87 ,.7,
+                7842.44,1
+            ]
+        }
     })
     map.addLayer({
         'id': 'continents-layer',
@@ -38,12 +87,12 @@ function loadLayers(){
         'source': 'continents', // reference the data source
         'layout': {},
         'paint': {
-                'fill-color': 'rgba(192, 192, 192, 0.151)',
+                'fill-color': '#EA5830',
                 'fill-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
-                    1,
-                    0.5
+                    .4,
+                    0.015
                 ]
             }
         })
@@ -55,37 +104,14 @@ function loadLayers(){
                 'circle-radius': 10,
                 'circle-color': 'rgb(88, 182, 150)' // red color
             }
-    })
-    map.addLayer({
-        'id':'gw-layer-2015','source':'gw-2015','source-layer':'GLOBAL_DAnew2_GroundwaterStor-70w6uu',
-        'type': 'circle',
-        'paint':{
-            'circle-radius': {
-              base: 1.75,
-              stops: [
-                [12, 2],
-                [22, 180]
-              ]
-            },
-            'circle-color':'#002140',
-            'circle-opacity':
-            ['step',
-              ['get', 'value'],
-              4765.67,
-              .1,
-              4850.03,
-              .3,
-              4884.63,
-              .7,
-              4905.60,
-              1,
-              0
-            ]
-        }
-    })
+    })   
 }
 map.on('load',()=>{
     loadLayers()
+    map.setLayoutProperty(
+        'pe-layer-2020',
+        'visibility','none'
+    )
     map.on('idle',()=>{
         map.once('click', 'continents-layer', () => {
             if(map.getZoom()<3){ 
@@ -158,7 +184,7 @@ map.on('load',()=>{
                         { hover: false }
                     );
                 }
-                hoveredPolygonId = e.features[0].properties["ADMIN"];
+                hoveredPolygonId = e.features[0].id;
                 map.setFeatureState(
                     { source: 'continents', id: hoveredPolygonId },
                     { hover: true }
@@ -169,6 +195,7 @@ map.on('load',()=>{
         // when it leaves the states layer.
         map.on('mouseleave', 'continents-layer', () => {
             map.getCanvas().style.cursor = '';
+            console.log(hoveredPolygonId)
             if (hoveredPolygonId !== null) {
                 map.setFeatureState(
                     { source: 'continents', id: hoveredPolygonId },
@@ -181,6 +208,36 @@ map.on('load',()=>{
             map.setStyle('mapbox://styles/mapbox/' +this.value)
         })
         // filters
+        $('input[type=radio][name=indicator]').change(function() {
+            if (this.value == 'Precipitation') {
+                map.setLayoutProperty(
+                    'gw-layer-2015',
+                    'visibility','none'
+                )
+                map.setLayoutProperty(
+                    'pe-layer-2020',
+                    'visibility','visible'
+                )
+                $('#legend-container').removeClass('gw-legend').addClass('pe-legend')
+                $('#legend-value').html('Presipitation Values')
+                $('#max-legend-value').html('7,842')
+                $('#min-legend-value').html('0.07')
+            }
+            else{
+                map.setLayoutProperty(
+                    'gw-layer-2015',
+                    'visibility','visible'
+                )
+                map.setLayoutProperty(
+                    'pe-layer-2020',
+                    'visibility','none'
+                )
+                $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
+                $('#legend-value').html('Ground Water Values')
+                $('#max-legend-value').html('5,569')
+                $('#min-legend-value').html('-0.406')
+            }
+        });
         $('#strategy-checkboxes').on('change',(val)=>{
             if(val.isTrusted){
                 switch (val.target.dataset.caption) {
@@ -223,7 +280,7 @@ map.on('load',()=>{
             queryFilter=['all',timeFrame1st,timeFrame2nd,issueFilter,categoryFilter]
             if(strategyAdaptation==null&&strategyAnticipation==null&&strategyPreparation==null){}
             else queryFilter.push(adaptationFilter,anticipationFilter,preparationFilter)
-            map.setFilter('point-layer',queryFilter)
+            // map.setFilter('point-layer',queryFilter)
         }
         map.once('style.load',()=>{
             loadLayers()

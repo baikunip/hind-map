@@ -79,7 +79,7 @@
                 </div>
                 <div class="card card-filter cell-1 m-1 filter-colors">
                     <div class="card-header card-filter-header text-center">
-                    DIMENSION
+                    DIMENSIONS
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="strategy-checkboxes">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="card card-filter cell-1 m-1 filter-colors">
                     <div class="card-header card-filter-header text-center">
-                    CATEGORY
+                    CATEGORIES
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="category-checkboxes">
@@ -119,12 +119,12 @@
                 </div>
                 <div class="card card-filter cell-1 m-1 filter-colors">
                     <div class="card-header card-filter-header text-center">
-                    INDICATOR
+                    INDICATORS
                     </div>
                     <div class="card-content card-filter-body filter-colors">
                         <ul data-role="treeview" class="filter-treeviews filter-colors">
-                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Reservoir Storage Levels" data-caption="Reservoir Storage Level" checked></li>
-                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Water Storage Infrastructure" data-caption="Water Storage Infrastructure"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage" checked></li>
                         </ul>
                     </div>
                 </div>
@@ -151,6 +151,23 @@
                         </ul>
                     </div>
                 </div>
+                <div class="card card-filter cell-1 m-1 filter-colors">
+                    <div class="card-header card-filter-header text-center">
+                    LEGEND
+                    </div>
+                    <div class="card-content card-filter-body filter-colors">
+                        <div class="row pl-6 pt-1">
+                            <div class="cell-12" id="legend-value">Ground Water Value</div>
+                            <div class="cell-4">
+                                <div id="legend-container" class="gw-legend"></div>
+                            </div>
+                            <div class="cell-8">
+                                <div id="max-legend-value">5,569</div>
+                                <div id="min-legend-value">-0.406</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
         </div>
     </div>   
@@ -158,6 +175,7 @@
     <script src="https://cdn.metroui.org.ua/current/metro.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <script src="assets/caseStudies.js"></script>
+    <script src="assets/global.js"></script>
     <script src="assets/main.js"></script>
 </body>
 </html>
