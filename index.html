@@ -15,15 +15,6 @@
 </head>
 <body>
     <div id="map">
-        <!-- <div data-role="window" id="popup-window-buttons"
-            data-title="Country's Card"
-            data-btn-close="true"
-            data-btn-min="false"
-            data-btn-max="false"
-            data-cls-caption="rgb(88, 182, 150)"
-            class="p-2 no-visible">
-            On/off window system buttons with attributes.
-        </div> -->
         <button type="button" class="button add-control" id="share-control"><i class="bi bi-reply"></i></button>
         <button type="button" class="button add-control" id="extent-control"><i class="bi bi-arrows-collapse"></i></button>
         <button type="button" class="button add-control" id="basemap-control"><i class="bi bi-stack"></i></button>
@@ -36,6 +27,23 @@
                         <li><input type="radio" name="basemap" data-role="radio" data-caption="Standard" value="standard"></li>
                         <li><input type="radio" name="basemap" data-role="radio" data-caption="Dark" value="dark-v11"></li>
                     </ul>
+            </div>
+        </div>
+        <div class="card card-filter" id="legend-main">
+            <div class="card-header card-filter-header text-center filter-colors">
+            LEGEND
+            </div>
+            <div class="card-content card-filter-body filter-colors">
+                <div class="row pl-6 pt-1 no-pad">
+                    <div class="cell-12" id="legend-value">Ground Water Value</div>
+                    <div class="cell-12">
+                        <div id="legend-container" class="gw-legend"></div>
+                    </div>
+                    <div class="cell-12">
+                        <div id="max-legend-value">5,569</div>
+                        <div id="min-legend-value">-0.406</div>
+                    </div>
+                </div>
             </div>
         </div>
         <button id="filter-button" type="button" class="button">
@@ -151,25 +159,7 @@
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Case Studies"></li>
                         </ul>
                     </div>
-                </div>
-                <div class="card card-filter cell-1 m-1 filter-colors">
-                    <div class="card-header card-filter-header text-center">
-                    LEGEND
-                    </div>
-                    <div class="card-content card-filter-body filter-colors">
-                        <div class="row pl-6 pt-1">
-                            <div class="cell-12" id="legend-value">Ground Water Value</div>
-                            <div class="cell-4">
-                                <div id="legend-container" class="gw-legend"></div>
-                            </div>
-                            <div class="cell-8">
-                                <div id="max-legend-value">5,569</div>
-                                <div id="min-legend-value">-0.406</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+                </div>          
         </div>
     </div>   
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

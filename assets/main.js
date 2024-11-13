@@ -141,21 +141,8 @@ map.on('load',()=>{
                                     <div class="cell-12 mt-1 popup-title">
                                         <b>Drought Severity (SPEI)</b>
                                     </div>
-                                    <div class="cell-12 popup-text" id="spei-container-less">
-                                        `+shortText+`...
-                                        <br>
-                                        <button type="button" class="button" id="read-more-popup" onClick="()=>{
-                                            $('#spei-container-more').show()
-                                            $('#spei-container-less').hide()
-                                        }">read more</button>
-                                    </div>
-                                    <div class="cell-12 popup-text" id="spei-container-more" style="display:none">
+                                    <div class="cell-12 popup-text">
                                         `+features[0].properties.spei+`
-                                        <br>
-                                        <button type="button" class="button" id="read-less-popup" onClick="()=>{
-                                            $('#spei-container-less').show()
-                                            $('#spei-container-more').hide()
-                                        }">read less</button>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Indicator</b></span>

@@ -174,18 +174,29 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     color:blue;
 }
 /* Legends */
+#legend-main{
+    position:absolute;
+    z-index:4;
+    width:28em;
+    right:.45em;
+    bottom:.45em;
+    background-color: #72AA9F;
+}
 #legend-container{
-    height:5.5em;
-    width:33px;
+    height:15px;
+    width:90%;
+    margin-left:5%;
+    padding:0;
+    margin-bottom:5px;
     border-style:none;
 }
-#max-legend-value{position:absolute;top:0;left:0;padding:0;}
+#max-legend-value{position:absolute;bottom:0;right:0;padding:0;}
 #min-legend-value{position:absolute;bottom:0;left:0;padding:0;}
 .gw-legend{
     background: rgb(0,33,64);
-    background: linear-gradient(0deg, rgba(0,33,64,0.05085784313725494) 0%, rgba(0,33,64,1) 100%);
+    background: linear-gradient(90deg, rgba(0,33,64,0.05085784313725494) 0%, rgba(0,33,64,1) 100%);
 }
 .pe-legend{
     background: rgb(89,144,192);
-    background: linear-gradient(0deg, rgba(89,144,192,0) 0.1%, rgba(89,144,192,1) 100%);
+    background: linear-gradient(90deg, rgba(89,144,192,0) 0.1%, rgba(89,144,192,1) 100%);
 }
