@@ -147,17 +147,23 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     position: relative;
 }
 .mapboxgl-popup-tip{
-    border-right-color: rgba(250, 235, 215, 0.8)!important;
+    border-right-color: rgba(250, 235, 215, 0.6)!important;
 }
 .cases-popup-container{
     width:36em;
-    background-color: rgba(250, 235, 215, 0.8);
+    background-color: rgba(250, 235, 215, 0.6);
     padding:8px;
     overflow-y: scroll;
     max-height:40vh;
 }
 .popup-text{font-size:1.3em;}
 .popup-title{font-size:1.5em;}
+#read-more-popup{
+    border-style:none;
+    box-shadow: none;
+    background-color: transparent;
+    color:blue;
+}
 /* Legends */
 #legend-container{
     height:5.5em;

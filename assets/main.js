@@ -89,7 +89,7 @@ function loadLayers(){
         'source': 'continents', // reference the data source
         'layout': {},
         'paint': {
-                'fill-color': '#EA5830',
+                'fill-color': '#72AA9F',
                 'fill-opacity': [
                     'case',
                     ['boolean', ['feature-state', 'hover'], false],
@@ -129,19 +129,22 @@ map.on('load',()=>{
                 // }
                 map.panTo(e.lngLat)
                 $('.mapboxgl-popup').css('max-width','auto')
+                let shortText=features[0].properties.spei.split(' ').splice(0,17).join(" ")
                 new mapboxgl.Popup({closeButton: false,width:'auto',anchor:'left',maxWidth:'none'})
                         .setLngLat(e.lngLat)
                         .setHTML(`
                                 <div class="cases-popup-container row">
                                     <div class="cell-12">
-                                        <span><h2><b>`+features[0].properties.title+`</b></h2></span>
+                                        <span><h3><b>`+features[0].properties.title+`</b></h3></span>
                                         <hr>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <b>Drought Severity (SPEI)</b>
                                     </div>
-                                    <div class="cell-12 popup-text">
-                                        `+features[0].properties.spei+`
+                                    <div class="cell-12 popup-text" id="spei-container">
+                                        `+shortText+`...
+                                        <br>
+                                        <button type="button" class="button" id="read-more-popup">read more</button>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Indicator</b></span>
@@ -171,6 +174,18 @@ map.on('load',()=>{
                                     </div>
                                 </div>
                             `).addTo(map);
+                function readLess(){
+                    $('#spei-container').html(shortText+`...
+                        <br>
+                        <button type="button" class="button" id="read-more-popup" onClick="readMore()">read more</button>
+                    `)
+                }
+                function readMore(){
+                    $('#spei-container').html(features[0].properties.spei+`
+                        <br>
+                        <button type="button" class="button" id="read-less-popup" onCLick=`+readLess()+`>read less</button>
+                    `)
+                }
             })
         })
         // the mouse is over the states layer.
