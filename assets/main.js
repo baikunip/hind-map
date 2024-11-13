@@ -65,10 +65,10 @@ function loadLayers(){
         'type': 'circle',
         'paint':{
             'circle-radius': {
-              base: 3,
+              base: 1.7,
               stops: [
-                [12, 6],
-                [22, 180]
+                [12, 3],
+                [22, 80]
               ]
             },
             'circle-color':'#5990C0',
@@ -183,9 +183,11 @@ map.on('load',()=>{
                 function readMore(){
                     $('#spei-container').html(features[0].properties.spei+`
                         <br>
-                        <button type="button" class="button" id="read-less-popup" onCLick=`+readLess()+`>read less</button>
+                        <button type="button" class="button" id="read-less-popup">read less</button>
                     `)
+                    $('#read-less-popup')
                 }
+                $('#read-more-popup').on('click',readMore())
             })
         })
         // the mouse is over the states layer.
