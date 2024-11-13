@@ -42,11 +42,11 @@ function loadLayers(){
         'type': 'circle',
         'paint':{
             'circle-radius': {
-              base: 3,
-              stops: [
-                [12, 6],
-                [22, 180]
-              ]
+                base: 1.7,
+                stops: [
+                  [12, 3],
+                  [22, 80]
+                ]
             },
             'circle-color':'#002140',
             'circle-opacity':
@@ -185,7 +185,7 @@ map.on('load',()=>{
                         <br>
                         <button type="button" class="button" id="read-less-popup">read less</button>
                     `)
-                    $('#read-less-popup')
+                    $('#read-less-popup').on('click',readLess())
                 }
                 $('#read-more-popup').on('click',readMore())
             })
