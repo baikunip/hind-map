@@ -177,7 +177,8 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
 #legend-main{
     position:absolute;
     z-index:4;
-    width:28em;
+    width:25em;
+    height:10em;
     right:.45em;
     bottom:.45em;
     background-color: #72AA9F;
