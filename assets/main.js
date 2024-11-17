@@ -2,8 +2,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYmFpa3VuaXAxNCIsImEiOiJjbTM3ZjRoMHYwZGg3MmxyN
 let tilesetID='baikunip14.14a7rsdu'
 // Filter variables
     let timeFrame=[1900,2025],
-    issues=['Infrastructure Systems', 'Urban Areas', 'Adaptation Measures', 'Equity Considerations', 'Vulnerability and Risk', 'Community Awareness', 'Resilient Infrastructure', 'Urban Green Spaces', 'Water-Efficient Design', 'Costs and Resilience', 'Forecast-Based Financing', 'Impact on Economic Growth', 'Socioeconomic Drought', 'Economic Impacts of Drought', 'Resource Allocation', 'Trade-offs and Decision-Making', 'Ecosystem Resilience', 'Mitigation Strategies', 'Ecological Drought', 'Human-Environment Interaction', 'Nature-Based Solutions', 'Ecosystems and Drought', 'Watersheds and Wetlands', 'Community Resilience and Adaptation', 'Economic Channel', 'Immediate and Medium-Term Impacts', 'Communities', 'Households', 'Individuals', 'Economic Consequences', 'Health and Well-Being', 'Social Impacts', "nan"],
-    categories=['Built Environment',"Natural Environment","Economy","People and Community"],
+    categories=[],
+    issues=[],checkedIssues=[],
+    indicators=[],
     strategyPreparation=null,strategyAnticipation=null,strategyAdaptation=null
 // End of filter variables
 const map = new mapboxgl.Map({
@@ -246,7 +247,7 @@ map.on('load',()=>{
                 $('#max-legend-value').html('7,842')
                 $('#min-legend-value').html('0.07')
             }
-            else{
+            else if(this.value=='Ground Water Storage'){
                 map.setLayoutProperty(
                     'gw-layer-2015',
                     'visibility','visible'
@@ -259,8 +260,53 @@ map.on('load',()=>{
                 $('#legend-value').html('Ground Water Values')
                 $('#max-legend-value').html('5,569')
                 $('#min-legend-value').html('-0.406')
+            }else{
+                map.setLayoutProperty(
+                    'gw-layer-2015',
+                    'visibility','none'
+                )
+                map.setLayoutProperty(
+                    'pe-layer-2020',
+                    'visibility','none'
+                )
+                // $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
+                $('#legend-value').html(this.value)
+                $('#max-legend-value').html('-')
+                $('#min-legend-value').html('-')
             }
         });
+        function initialIndicatorAdd(){
+            $('#indicator-radios').empty().append(`
+                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
+                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage"></li>
+            `)
+            checkedIssues.forEach(issue => {
+                categories.forEach(category => {
+                    let filterIssues=Object.keys(filterOptions[category])
+                    if(filterIssues.includes(issue)){
+                        filterOptions[category][issue].forEach(indicator => {
+                            $('#indicator-radios').append(`
+                                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="`+indicator+`" data-caption="`+indicator+`"></li>
+                            `)
+                        });
+                        
+                    }
+                });  
+            })
+            $('input[type=radio][name=indicator][value="Ground Water Storage"]').prop('checked', true);
+            map.setLayoutProperty(
+                'gw-layer-2015',
+                'visibility','visible'
+            )
+            map.setLayoutProperty(
+                'pe-layer-2020',
+                'visibility','none'
+            )
+            $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
+            $('#legend-value').html('Ground Water Values')
+            $('#max-legend-value').html('5,569')
+            $('#min-legend-value').html('-0.406')
+        }
         $('#strategy-checkboxes').on('change',(val)=>{
             if(val.isTrusted){
                 switch (val.target.dataset.caption) {
@@ -277,19 +323,34 @@ map.on('load',()=>{
                 applyFilters()
             }
         })
-        $('#category-checkboxes').on('change',(val)=>{
+        
+        $('#category-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
             if(val.isTrusted){
                 if(categories.includes(val.target.dataset.caption))categories=categories.filter((e)=>{ return e !== val.target.dataset.caption })
                 else categories.push(val.target.dataset.caption)
-                console.log(categories)
-                applyFilters()
+                issues=[]
+                for (let index = 0; index < categories.length; index++) {
+                    const element = categories[index];
+                    Object.keys(filterOptions[element]).forEach(issue => {
+                        if(issues.includes(issue))issues=issues.filter((e)=>{ return e !== issue })
+                        else{issues.push(issue)}
+                    });            
+                }
+                $('#relevant-issue-checkboxes').empty()
+                issues.forEach(issue => {
+                    $('#relevant-issue-checkboxes').append(`
+                        <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="`+issue+`"></li>
+                    `)
+                });
+                checkedIssues=[]
+                initialIndicatorAdd()
             }
         })
-        $('#relevant-issue-checkboxes').on('change',(val)=>{
+        $('#relevant-issue-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
             if(val.isTrusted){
-                if(issues.includes(val.target.dataset.caption))issues=issues.filter((e)=>{ return e !== val.target.dataset.caption })
-                else issues.push(val.target.dataset.caption)
-                applyFilters()
+                if(checkedIssues.includes(val.target.dataset.caption))checkedIssues=checkedIssues.filter((e)=>{ return e !== val.target.dataset.caption })
+                else checkedIssues.push(val.target.dataset.caption)
+                initialIndicatorAdd() 
             }
         })
         function applyFilters(){
