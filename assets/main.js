@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmFpa3VuaXAxNCIsImEiOiJjbTM3ZjRoMHYwZGg3MmxyNnJ2Y2U0ZzRxIn0.jjzTr5UGycXAVWa8_bgt1w';
 let tilesetID='baikunip14.14a7rsdu'
 // Filter variables
-    let timeFrame=[1900,2025],
+    let timeFrame=[1900,2030],
     categories=[],
     issues=[],checkedIssues=[],
     indicators=[],
