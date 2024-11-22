@@ -424,7 +424,16 @@ $(document).ready(()=>{
     // checkedIssues=[]
     // initialIndicatorAdd()
 })
-function checkAll(){
-
+function checkAllIssues(){
+    if(issues.length>0){
+        console.log('triggered')
+        $('#relevant-issue-checkboxes li').each((issuecheckbox)=>{
+            let thecheckbox=$('#relevant-issue-checkboxes li input')[issuecheckbox]
+            if(!thecheckbox.is(":checked")){
+                thecheckbox.click()
+            }
+        })
+        // .trigger("change")
+    }
 }
 

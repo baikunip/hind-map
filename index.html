@@ -30,7 +30,7 @@
                     </ul>
             </div>
         </div>
-        <div class="card" id="legend-main" style="background-color:white">
+        <div class="card" id="legend-main" style="background-color:rgb(255, 255, 255,.97)">
             <div class="card-header card-filter-header text-center">
             LEGEND
             </div>
@@ -117,9 +117,8 @@
                     <span>RELEVANT ISSUES</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <button type="button" class="image-button mini dark outline check-all-btn" id="check-all-issues">
-                            <span class="mif-checkmark icon"></span>
-                            <span class="caption">Check all</span>
+                        <button type="button" class="button mini dark outline check-all-btn" id="check-all-issues" onclick="checkAllIssues()">
+                            Check all
                         </button>
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="relevant-issue-checkboxes">
                             <!-- <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="Adaptation Measures" checked></li>
