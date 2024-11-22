@@ -104,6 +104,9 @@
                     CATEGORIES
                     </div>
                     <div class="card-content card-filter-body filter-colors">
+                        <button type="button" class="button mini light outline check-all-btn" id="check-all-categories" onclick="checkAll('category-checkboxes')">
+                            Check all
+                        </button>
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="category-checkboxes">
                             <li class="filter-colors filter-text"><input type="checkbox" name="category-checkbox" data-role="checkbox" data-caption="Built Environment"></li>
                             <li class="filter-colors filter-text"><input type="checkbox" name="category-checkbox" data-role="checkbox" data-caption="Natural Environment"></li>
@@ -117,7 +120,7 @@
                     <span>RELEVANT ISSUES</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <button type="button" class="button mini dark outline check-all-btn" id="check-all-issues" onclick="checkAllIssues()">
+                        <button type="button" class="button mini light outline check-all-btn" id="check-all" onclick="checkAll('relevant-issue-checkboxes')">
                             Check all
                         </button>
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="relevant-issue-checkboxes">
@@ -146,7 +149,10 @@
                     RESOURCES
                     </div>
                     <div class="card-content card-filter-body filter-colors">
-                        <ul data-role="treeview" class="filter-treeviews filter-colors">
+                        <button type="button" class="button mini light outline check-all-btn" id="check-all" onclick="checkAll('resources-checkboxes')">
+                            Check all
+                        </button>
+                        <ul data-role="treeview" class="filter-treeviews filter-colors" id="resources-checkboxes">
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Publications"></li>
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Tools"></li>
                             <li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" data-caption="Report"></li>
