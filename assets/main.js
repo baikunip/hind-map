@@ -395,7 +395,7 @@ $('#filter-button').on('click',()=>{
     }else{
         $('#filter-content').css('display','flex')
         $('#filter-container').css({'display':'block'})
-        $('#map').css('height','75vh')
+        $('#map').css('height','73vh')
         map.resize();
         $('#filter-button').html(`
             <div class="row g-0 text-center">
@@ -406,3 +406,21 @@ $('#filter-button').on('click',()=>{
         hideFilter=true
     }
 })
+$(document).ready(()=>{
+    for (let index = 0; index < categories.length; index++) {
+        const element = categories[index];
+        console.log($('input:checkbox'))      
+    }
+    // $('#relevant-issue-checkboxes').empty()
+    // issues.forEach(issue => {
+    //     $('#relevant-issue-checkboxes').append(`
+    //         <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="`+issue+`"></li>
+    //     `)
+    // });
+    // checkedIssues=[]
+    // initialIndicatorAdd()
+})
+function checkAll(){
+
+}
+
