@@ -311,52 +311,7 @@ map.on('load',()=>{
             $('#max-legend-value').html('5,569')
             $('#min-legend-value').html('-0.406')
         }
-        $('#strategy-checkboxes').on('change',(val)=>{
-            if(val.isTrusted){
-                switch (val.target.dataset.caption) {
-                    case "Adapt":
-                        strategyAdaptation=="Adapt"?strategyAdaptation=null:strategyAdaptation="Adapt"
-                        break;
-                    case "Prepare":
-                        strategyPreparation=="Prepare"?strategyPreparation=null:strategyPreparation="Prepare"
-                        break;
-                    default:
-                        strategyAnticipation=="Anticipate"?strategyAnticipation=null:strategyAnticipation="Anticipate"
-                        break;
-                }
-                applyFilters()
-            }
-        })
         
-        $('#category-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
-            if(val.isTrusted){
-                if(categories.includes(val.target.dataset.caption))categories=categories.filter((e)=>{ return e !== val.target.dataset.caption })
-                else categories.push(val.target.dataset.caption)
-                issues=[]
-                for (let index = 0; index < categories.length; index++) {
-                    const element = categories[index];
-                    Object.keys(filterOptions[element]).forEach(issue => {
-                        if(issues.includes(issue))issues=issues.filter((e)=>{ return e !== issue })
-                        else{issues.push(issue)}
-                    });            
-                }
-                $('#relevant-issue-checkboxes').empty()
-                issues.forEach(issue => {
-                    $('#relevant-issue-checkboxes').append(`
-                        <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="`+issue+`"></li>
-                    `)
-                });
-                checkedIssues=[]
-                initialIndicatorAdd()
-            }
-        })
-        $('#relevant-issue-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
-            if(val.isTrusted){
-                if(checkedIssues.includes(val.target.dataset.caption))checkedIssues=checkedIssues.filter((e)=>{ return e !== val.target.dataset.caption })
-                else checkedIssues.push(val.target.dataset.caption)
-                initialIndicatorAdd() 
-            }
-        })
         function applyFilters(){
             let timeFrame1st=[">=", ['to-number', ["get", 'time']], parseInt(timeFrame[0])],
             timeFrame2nd=["<=", ['to-number', ["get", 'time']], parseInt(timeFrame[1])],
@@ -415,14 +370,53 @@ $(document).ready(()=>{
         const element = categories[index];
         console.log($('input:checkbox'))      
     }
-    // $('#relevant-issue-checkboxes').empty()
-    // issues.forEach(issue => {
-    //     $('#relevant-issue-checkboxes').append(`
-    //         <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="`+issue+`"></li>
-    //     `)
-    // });
-    // checkedIssues=[]
-    // initialIndicatorAdd()
+    $('#strategy-checkboxes').on('change',(val)=>{
+        if(val.isTrusted){
+            switch (val.target.dataset.caption) {
+                case "Adapt":
+                    strategyAdaptation=="Adapt"?strategyAdaptation=null:strategyAdaptation="Adapt"
+                    break;
+                case "Prepare":
+                    strategyPreparation=="Prepare"?strategyPreparation=null:strategyPreparation="Prepare"
+                    break;
+                default:
+                    strategyAnticipation=="Anticipate"?strategyAnticipation=null:strategyAnticipation="Anticipate"
+                    break;
+            }
+            applyFilters()
+        }
+    })
+    
+    $('#category-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
+        if(val.isTrusted){
+            if(categories.includes(val.target.dataset.caption))categories=categories.filter((e)=>{ return e !== val.target.dataset.caption })
+            else categories.push(val.target.dataset.caption)
+            issues=[]
+            for (let index = 0; index < categories.length; index++) {
+                const element = categories[index];
+                Object.keys(filterOptions[element]).forEach(issue => {
+                    if(issues.includes(issue))issues=issues.filter((e)=>{ return e !== issue })
+                    else{issues.push(issue)}
+                });            
+            }
+            $('#relevant-issue-checkboxes').empty()
+            issues.forEach(issue => {
+                $('#relevant-issue-checkboxes').append(`
+                    <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="`+issue+`"></li>
+                `)
+            });
+            checkedIssues=[]
+            initialIndicatorAdd()
+        }
+    })
+    $('#relevant-issue-checkboxes').off('change', 'input[type="checkbox"]').on('change', 'input[type="checkbox"]',(val)=>{
+        if(val.isTrusted){
+            if(checkedIssues.includes(val.target.dataset.caption))checkedIssues=checkedIssues.filter((e)=>{ return e !== val.target.dataset.caption })
+            else checkedIssues.push(val.target.dataset.caption)
+            initialIndicatorAdd() 
+        }
+    })
+    $('#category-checkboxes li input')[0].click()
 })
 function checkAll(container){
     $('#'+container+' li').each((issuecheckbox)=>{
