@@ -280,6 +280,10 @@ map.on('load',()=>{
                 <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
                 <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage"></li>
             `)
+            //<li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Urban Green Space per Capita (sq. meters per person)" data-caption="Urban Green Space per Capita (sq. meters per person)"></li>
+            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Compliance with Drought-Related Policies (%)" data-caption="Compliance with Drought-Related Policies (%)"></li>
+            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Frequency of Stakeholder Coordination Meetings per Quarter" data-caption="Frequency of Stakeholder Coordination Meetings per Quarter"></li>
+            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Adoption Rate of Climate-Adapted Technologies (%)" data-caption="Adoption Rate of Climate-Adapted Technologies (%)"></li>
             checkedIssues.forEach(issue => {
                 categories.forEach(category => {
                     let filterIssues=Object.keys(filterOptions[category])

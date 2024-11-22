@@ -155,11 +155,12 @@ body { margin: 0; padding: 0;font-family: "Source Sans 3", sans-serif;
     position: relative;
 }
 .mapboxgl-popup-tip{
-    border-right-color: rgba(250, 235, 215, 0.9)!important;
+    /* border-right-color: rgba(250, 235, 215, 1)!important; */
+    border-right-color: rgb(255, 255, 255)!important;
 }
 .cases-popup-container{
     width:36em;
-    background-color: rgba(250, 235, 215, 0.9);
+    background-color: rgb(255, 255, 255)!important;
     padding:8px;
     overflow-y: scroll;
     max-height:40vh;

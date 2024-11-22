@@ -7,6 +7,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.metroui.org.ua/current/metro.css">
+    <link href="https://cdn.metroui.org.ua/current/icons.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
@@ -29,11 +30,11 @@
                     </ul>
             </div>
         </div>
-        <div class="card card-filter" id="legend-main" style="background-color:#85c4b6!important">
-            <div class="card-header card-filter-header text-center filter-colors">
+        <div class="card" id="legend-main" style="background-color:white">
+            <div class="card-header card-filter-header text-center">
             LEGEND
             </div>
-            <div class="card-content card-filter-body filter-colors">
+            <div class="card-content">
                 <div class="row pl-6 pt-1 no-pad">
                     <div class="cell-12" id="legend-value">Ground Water Value</div>
                     <div class="cell-12">
@@ -116,7 +117,13 @@
                     <span>RELEVANT ISSUES</span>
                     </div>
                     <div class="card-content card-filter-body filter-colors">
+                        <button type="button" class="image-button mini dark outline check-all-btn" id="check-all-issues">
+                            <span class="mif-checkmark icon"></span>
+                            <span class="caption">Check all</span>
+                        </button>
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="relevant-issue-checkboxes">
+                            <!-- <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="Adaptation Measures" checked></li>
+                            <li class="filter-colors filter-text"><input name="relevant-issue-checkboxes" type="checkbox" data-role="checkbox" data-caption="Urban Green Spaces" checked></li> -->
                         </ul>
                     </div>
                 </div>
@@ -128,6 +135,10 @@
                         <ul data-role="treeview" class="filter-treeviews filter-colors" id="indicator-radios">
                             <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
                             <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage" checked></li>
+                            <!-- <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Urban Green Space per Capita (sq. meters per person)" data-caption="Urban Green Space per Capita (sq. meters per person)"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Compliance with Drought-Related Policies (%)" data-caption="Compliance with Drought-Related Policies (%)"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Frequency of Stakeholder Coordination Meetings per Quarter" data-caption="Frequency of Stakeholder Coordination Meetings per Quarter"></li>
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Adoption Rate of Climate-Adapted Technologies (%)" data-caption="Adoption Rate of Climate-Adapted Technologies (%)"></li> -->
                         </ul>
                     </div>
                 </div>
