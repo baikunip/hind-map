@@ -149,7 +149,7 @@ map.on('load',()=>{
                                         <span><b>Indicator</b></span>
                                     </div>
                                     <div class="cell-12 popup-text-sm">
-                                        <span>Standardized Precipitation Evapotranspiration Index (SPEI)</span>
+                                        <span>`+features[0].properties.indicators+`</span>
                                     </div>
                                     <div class="cell-12 mt-1 popup-title">
                                         <span><b>Relevant Issue</b></span>
