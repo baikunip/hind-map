@@ -2,40 +2,59 @@ let arrayCountries=[
     {
       continent: "Africa",
       countries: [
-        "Nigeria", "Ethiopia", "Egypt", "South Africa", "Kenya",
-        "Uganda", "Algeria", "Sudan", "Morocco", "Ghana",
+        "Algeria",'Eswatini','Niger','Angola','Ethiopia','Nigeria','Benin','Gabon','Rwanda','Botswana',
+        'Ghana','Sao Tome and Principe','Burkina Faso','Guinea','Burundi','Guinea-Bissau','Senegal','Cabo Verde','Kenya','Seychelles',
+        'Cameroon','Lesotho','Sierra Leone','Central Africal Republic','Liberia','South Africa','Chad','Madagascar','South Sudan',
+        'Comoros','Malawi','Gambia','Congo','Mali','Togo',"Ivory Coast","Mauritania","Democratic Republic of Congo","Mauritius",'Uganda',
+        'Equatorial Guinea','Mozambique','United Republic of Tanzania','Eritrea','Namibia','Zambia','Zimbabwe'
         // Add more countries as needed
       ]
     },
-    {
-      continent: "Asia",
-      countries: [
-        "China", "India", "Indonesia", "Pakistan", "Bangladesh",
-        "Japan", "Philippines", "Vietnam", "Turkey", "Iran",
-        // Add more countries as needed
-      ]
+    {continent: "Central Asia",
+      countries:['Uzbekistan','Kazakhstan','Tajikistan','Turkmenistan','Kyrgyzstan']
+    },
+    {continent: "Eastern Asia",
+      countries:['China','Japan','South Korea','North Korea','Mongolia']
+    },
+    {continent: "South-Eastern Asia",
+      countries:['Indonesia','Philippines','Vietnam','Thailand','Myanmar','Malaysia','Cambodia','Laos','Singapore','Timor-Leste','Brunei']
+    },
+    {continent: "Southern Asia",
+      countries:['India','Pakistan','Bangladesh','Iran','Afghanistan','Nepal','Sri Lanka','Bhutan','Maldives']
+    },
+    {continent: "Western Asia",
+      countries:['Turkey','Iraq','Yemen','Saudi Arabia','Syria','Jordan','United Arab Emirates','Azerbaijan','Israel',
+        'Lebanon','Palestine','Oman','Kuwait','Georgia','Qatar','Armenia','Bahrain','Cyprus']
     },
     {
       continent: "Europe",
       countries: [
         "Russia", "Germany", "United Kingdom", "France", "Italy",
-        "Spain", "Ukraine", "Poland", "Romania", "Netherlands",
+        "Spain", "Ukraine", "Poland", "Romania", "Netherlands","Belgium",'Czech Republic','Sweden','Portugal','Greece',
+        'Hungary','Austria','Belarus','Switzerland','Bulgaria','Serbia','Denmark','Finland','Norway','Slovakia','Ireland','Croatia',
+        'Bosnia and Herzegovina','Moldova','Lithuania','Albania','Slovenia','Latvia','North Macedonia','Estonia','Luxembourg','Montenegro','Malta','Iceland','Andorra','Liechtenstein',
+        'Monaco','San Marino','Holy See'
         // Add more countries as needed
       ]
     },
     {
       continent: "North America",
       countries: [
-        "United States", "Canada", "Mexico", "Guatemala", "Cuba",
-        "Haiti", "Dominican Republic", "Honduras", "Nicaragua", "El Salvador",
+        "United States", "Canada", "Jamaica","Puerto Rico","Trinidad and Tobago","Guadeloupe","Martinique",
+        "Greenland","Mexico", "Guatemala", "Cuba","Guatemala","Panama","Costa Rica","Belize","Bahamas",
+        "Haiti", "Dominican Republic", "Honduras", "Nicaragua", "El Salvador","Turks and Caicos Islands",
+        "Dominica","Saint Lucia","Curaçao","Antigua and Barbuda","Barbados","Saint Vincent and the Grenadines",
+        "US Virgin Islands","Grenada","Caribbean Netherlands","Cayman Islands","Saint Kitts and Nevis","Saint Pierre and Miquelon",
+        "Aruba","British Virgin Islands","Montserrat","Anguilla","Bermuda","Sint Maarten","Saint Barthelemy",
+        "Clipperton Island"
         // Add more countries as needed
       ]
     },
     {
       continent: "South America",
       countries: [
-        "Brazil", "Argentina", "Colombia", "Peru", "Venezuela",
-        "Chile", "Ecuador", "Bolivia", "Paraguay", "Uruguay",
+        "Argentina","Bolivia","Brazil","Chile","Colombia","Ecuador","Falkland Islands","French Guiana","Guyana",
+        "Paraguay","Peru","South Georgia and South Sandwich Islands","Suriname","Uruguay","Venezuela"
         // Add more countries as needed
       ]
     },
@@ -46,10 +65,6 @@ let arrayCountries=[
         "Vanuatu", "Samoa", "Kiribati", "Tonga", "Micronesia",
         // Add more countries as needed
       ]
-    },
-    {
-      continent: "Antarctica",
-      countries: []
     }
   ]
 let filterOptions={'Built Environment': 

@@ -2,6 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYmFpa3VuaXAxNCIsImEiOiJjbTM3ZjRoMHYwZGg3MmxyN
 let tilesetID='baikunip14.14a7rsdu'
 // Filter variables
     let timeFrame=[1900,2030],
+    selectedCountries=[],
     categories=[],
     issues=[],checkedIssues=[],
     indicators=[],
@@ -99,6 +100,16 @@ function loadLayers(){
                 ]
             }
         })
+    map.addLayer({
+            id: 'countries-highlight',
+            type: 'fill',
+            source: 'continents',
+            paint: {
+                'fill-color': 'rgb(88, 182, 150)', // Highlight color
+                'fill-opacity': 0.8,  // Highlight opacity
+            },
+            filter: ['in', 'ADMIN', ''], // Initially no countries are highlighted
+        });
     map.addLayer({
             'id': 'point-layer',
             'type': 'circle',
@@ -365,7 +376,20 @@ $('#filter-button').on('click',()=>{
         hideFilter=true
     }
 })
+
+
 $(document).ready(()=>{
+    // arrayCountries.forEach(item => {
+    //     let html1=`<li class="expanded filter-colors" data-caption="`+item.continent+`">
+    //             <ul>`
+    //     item.countries.forEach(country=>{
+    //         html1+=`<li class="filter-colors filter-text"><input type="checkbox" data-role="checkbox" onclick="selectCountry(this)" data-caption="`+country+`"></li>`
+    //     })
+    //     html1+=`</ul>
+    //         </li>`
+    //     console.log(html1)
+    //     $('#world-filter-container').append(html1)
+    // });
     for (let index = 0; index < categories.length; index++) {
         const element = categories[index];
         console.log($('input:checkbox'))      
@@ -425,4 +449,12 @@ function checkAll(container){
             thecheckbox.click() 
         }
     })
+}
+function selectCountry(val){
+    if(val.checked==true){
+        selectedCountries.push(val.getAttribute('data-caption'))
+    }else{
+        if(selectedCountries.includes(val.getAttribute('data-caption')))selectedCountries=selectedCountries.filter((e)=>{ return e !== val.getAttribute('data-caption') })
+    }
+    map.setFilter('countries-highlight', ['in', 'ADMIN', ...selectedCountries]);
 }
