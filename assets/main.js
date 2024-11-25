@@ -286,42 +286,7 @@ map.on('load',()=>{
                 $('#min-legend-value').html('-')
             }
         });
-        function initialIndicatorAdd(){
-            $('#indicator-radios').empty().append(`
-                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
-                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage"></li>
-            `)
-            //<li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Urban Green Space per Capita (sq. meters per person)" data-caption="Urban Green Space per Capita (sq. meters per person)"></li>
-            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Compliance with Drought-Related Policies (%)" data-caption="Compliance with Drought-Related Policies (%)"></li>
-            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Frequency of Stakeholder Coordination Meetings per Quarter" data-caption="Frequency of Stakeholder Coordination Meetings per Quarter"></li>
-            // <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Adoption Rate of Climate-Adapted Technologies (%)" data-caption="Adoption Rate of Climate-Adapted Technologies (%)"></li>
-            checkedIssues.forEach(issue => {
-                categories.forEach(category => {
-                    let filterIssues=Object.keys(filterOptions[category])
-                    if(filterIssues.includes(issue)){
-                        filterOptions[category][issue].forEach(indicator => {
-                            $('#indicator-radios').append(`
-                                <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="`+indicator+`" data-caption="`+indicator+`"></li>
-                            `)
-                        });
-                        
-                    }
-                });  
-            })
-            $('input[type=radio][name=indicator][value="Ground Water Storage"]').prop('checked', true);
-            map.setLayoutProperty(
-                'gw-layer-2015',
-                'visibility','visible'
-            )
-            map.setLayoutProperty(
-                'pe-layer-2020',
-                'visibility','none'
-            )
-            $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
-            $('#legend-value').html('Ground Water Values')
-            $('#max-legend-value').html('5,569')
-            $('#min-legend-value').html('-0.406')
-        }
+        
         
         function applyFilters(){
             let timeFrame1st=[">=", ['to-number', ["get", 'time']], parseInt(timeFrame[0])],
@@ -390,9 +355,42 @@ $(document).ready(()=>{
     //     console.log(html1)
     //     $('#world-filter-container').append(html1)
     // });
+    function initialIndicatorAdd(){
+        $('#indicator-radios').empty().append(`
+            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Precipitation" data-caption="Precipitation"></li>
+            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="Ground Water Storage" data-caption="Ground Water Storage"></li>
+        `)
+        checkedIssues.forEach(issue => {
+            categories.forEach(category => {
+                let filterIssues=Object.keys(filterOptions[category])
+                if(filterIssues.includes(issue)){
+                    filterOptions[category][issue].forEach(indicator => {
+                        $('#indicator-radios').append(`
+                            <li class="filter-colors filter-text"><input type="radio" name="indicator" data-role="radio" value="`+indicator+`" data-caption="`+indicator+`"></li>
+                        `)
+                    });
+                    
+                }
+            });  
+        })
+        if(map.isStyleLoaded()){
+            $('input[type=radio][name=indicator][value="Ground Water Storage"]').prop('checked', true);
+            map.setLayoutProperty(
+                'gw-layer-2015',
+                'visibility','visible'
+            )
+            map.setLayoutProperty(
+                'pe-layer-2020',
+                'visibility','none'
+            )
+            $('#legend-container').removeClass('pe-legend').addClass('gw-legend')
+            $('#legend-value').html('Ground Water Values')
+            $('#max-legend-value').html('5,569')
+            $('#min-legend-value').html('-0.406')
+        } 
+    }
     for (let index = 0; index < categories.length; index++) {
-        const element = categories[index];
-        console.log($('input:checkbox'))      
+        const element = categories[index];     
     }
     $('#strategy-checkboxes').on('change',(val)=>{
         if(val.isTrusted){
@@ -441,15 +439,19 @@ $(document).ready(()=>{
         }
     })
     $('#category-checkboxes li input')[0].click()
+    async function checkAll(container){
+        $('#'+container+' li').each((issuecheckbox)=>{
+            let thecheckbox=$('#'+container+' li input')[issuecheckbox]
+            if(!thecheckbox.checked){
+                thecheckbox.click() 
+            }
+        })
+    }
+    checkAll('category-checkboxes').then(
+        checkAll('relevant-issue-checkboxes')
+    )
+    
 })
-function checkAll(container){
-    $('#'+container+' li').each((issuecheckbox)=>{
-        let thecheckbox=$('#'+container+' li input')[issuecheckbox]
-        if(!thecheckbox.checked){
-            thecheckbox.click() 
-        }
-    })
-}
 function selectCountry(val){
     if(val.checked==true){
         selectedCountries.push(val.getAttribute('data-caption'))
