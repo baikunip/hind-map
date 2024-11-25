@@ -131,7 +131,7 @@ map.on('load',()=>{
             if(map.getZoom()<3){ 
                 map.setProjection('mercator')
                 map.setMaxZoom(18)
-                map.zoomTo(5)
+                map.zoomTo(3)
                 map.setMinZoom(2)
             }           
             map.on('click',(e) => {
